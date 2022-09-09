@@ -1,0 +1,57 @@
+resource:
+  server:
+    - name: master01
+      ip: 192.168.0.?
+      core: 4000
+      memory: 8000
+    - name: slaver01
+      ip: 192.168.0.?
+      core: 4000
+      memory: 8000
+    - name: db-01
+      host: master01
+
+test:
+  - back-end:
+      res:
+        - slaver01
+      pods:
+        replica: 1
+        cpu: 4000
+        memory: 8000
+    db:
+      res:
+        - db01
+    rps: 670
+    avg: 1454
+    err: 0
+  - back-end:
+      res:
+        - master01
+        - slaver01
+      pods:
+        replica: 2
+        cpu: 4000
+        memory: 8000
+
+    db:
+      res:
+        - db01
+    rps: 576
+    avg: 1700
+    err: 0
+  - back-end:
+      res:
+        - master01
+        - slaver01
+      pods:
+        replica: 4
+        cpu: 2000
+        memory: 4000
+
+    db:
+      res:
+        - db01
+    rps: 576
+    avg: 1700
+    err: 0

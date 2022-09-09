@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana
+spec:
+  ports:
+    - name: kibana
+      nodePort: 30003
+      port: 5601
+      targetPort: 5601
+  selector:
+    app: kibana
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kibana
+spec:
+  serviceName: kibana
+  selector:
+    matchLabels:
+      app: kibana
+  template:
+    metadata:
+      labels:
+        app: kibana
+    spec:
+      containers:
+        - name: kibana
+          image: docker.elastic.co/kibana/kibana:8.3.3
+          ports:
+            - containerPort: 5601
+          volumeMounts:
+            - mountPath: /usr/share/kibana/config/certs
+              name: certs
+            - mountPath: /usr/share/kibana/data
+              name: kibanadata
+      volumes:
+        - name: certs
+          nfs:
+            server: 192.168.0.137
+            path: /root/data/main_process/elk/certs
+        - name: kibanadata
+          nfs:
+            server: 192.168.0.137
+            path: /root/data/main_process/es/kibana

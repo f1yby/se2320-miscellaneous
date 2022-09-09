@@ -1,0 +1,10 @@
+---
+base: http://123.60.142.95:30000
+iterations: 1000
+
+plan:
+  - name: Fetch houses
+    request:
+      url: /house/search
+      method: POST
+      body: ""
