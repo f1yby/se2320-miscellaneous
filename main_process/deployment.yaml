@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: back-end-legacy
-          image: lwsg/zlm@sha256:da08bba7460c79a40ea80162cb520302947041036a2e22351a50dffa994423e9
+          image: east-3.myhuaweicloud.com/zlm/back_end:3
           ports:
             - containerPort: 8080
           resources:
