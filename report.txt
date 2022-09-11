@@ -1,4 +1,0 @@
-
-- name: Fetch houses
-  duration: 38.4696
-  status: 200

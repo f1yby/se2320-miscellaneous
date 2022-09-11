@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="single-5000">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/benchmark/jmeter/statistics/single-5000.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
