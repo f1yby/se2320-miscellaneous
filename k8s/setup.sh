@@ -1,5 +1,5 @@
 if [ $# != 3 ]; then
-  echo "usage: setup.sh clash-version clash-config-link"
+  echo "\nusage: setup.sh clash-version clash-config-link\n\ne.g.\n\n'setup.sh amd64 fuck.gfw.com/clash' will download clash from https://github.com/Dreamacro/clash/releases/download/v1.11.8/amd64.gz and use config file downloaded from fuck.gfw.com/clash\n"
   exit 1
 fi
 
